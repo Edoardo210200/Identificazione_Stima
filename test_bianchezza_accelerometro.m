@@ -103,8 +103,8 @@ function result = anderson_whiteness_test(epsilon, maxLag, alpha, signal_name)
     yline(beta, '--', 'Limite superiore');
     yline(-beta, '--', 'Limite inferiore');
     grid on;
-    xlabel('\tau');
-    ylabel('\hat{\rho}(\tau)');
+    xlabel('$\tau$','Interpreter','latex');
+    ylabel('$\hat{\rho}(\tau)$','Interpreter','latex');
     title(['Test di bianchezza Anderson - ', signal_name]);
 
     %% Stampa risultati

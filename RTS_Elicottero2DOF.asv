@@ -37,7 +37,6 @@ N = size(x_corr, 1);
 %% Conversione matrici in formato 4 x 4 x N
 
 P_pred_3D = convert_to_3D_matrices(P_pred_raw, nx);
-P_pred_UKF_3D = convert_to_3D_matrices(P_pred_UKF_raw, nx);
 P_corr_3D = convert_to_3D_matrices(P_corr_raw, nx);
 P_corr_UKF_3D = convert_to_3D_matrices(P_corr_UKF_raw, nx);
 F_3D      = convert_to_3D_matrices(F_raw, nx);
@@ -129,7 +128,7 @@ legend('EKF', 'RTS');
 
 figure(5);
 plot(t, x_corr(:,1), 'LineWidth', 1.2,'Color','b'); hold on;
-plot(t, x_corr_UKF(:,1),'LineWidth', 1.2,'Color','r');
+plot(t, x_corr_UKF(:,1), 'LineWidth', 1.2,'Color','r');
 grid on;
 ylabel('$\alpha [rad]$', 'Interpreter','latex');
 xlabel('Tempo [s]');
@@ -207,7 +206,7 @@ legend('EKF', 'RTS');
 
 figure(13);
 plot(t, P_corr_diag(:,1), 'LineWidth', 1.2, 'Color','b'); hold on;
-plot(t, P_corr_UKF_diag(:,1), 'LineWidth', 1.2, 'Color','r');
+plot(t, P_corr_UK_diag(:,1), 'LineWidth', 1.2, 'Color','r');
 grid on;
 ylabel('$var(\alpha)$', 'Interpreter','latex');
 xlabel('Tempo [s]');
@@ -216,7 +215,7 @@ title('Confronto covarianze EKF - UKF');
 
 figure(14);
 plot(t, P_corr_diag(:,2), 'LineWidth', 1.2, 'Color','b'); hold on;
-plot(t, P_corr_UKF_diag(:,2), 'LineWidth', 1.2, 'Color','r');
+plot(t, P_smooth_diag(:,2), 'LineWidth', 1.2, 'Color','r');
 grid on;
 ylabel('var($\dot{\alpha}$)', 'Interpreter','latex');
 xlabel('Tempo [s]');
@@ -224,19 +223,19 @@ legend('EKF', 'UKF');
 
 figure(15);
 plot(t, P_corr_diag(:,3), 'LineWidth', 1.2,'Color','b'); hold on;
-plot(t, P_corr_UKF_diag(:,3), 'LineWidth', 1.2,'Color','r');
+plot(t, P_smooth_diag(:,3), 'LineWidth', 1.2,'Color','r');
 grid on;
 ylabel('var($\beta$)', 'Interpreter','latex');
 xlabel('Tempo [s]');
-legend('EKF', 'UKF');
+legend('EKF', 'RTS');
 
 figure(16);
 plot(t, P_corr_diag(:,4), 'LineWidth', 1.2,'Color','b'); hold on;
-plot(t, P_corr_UKF_diag(:,4), 'LineWidth', 1.2,'Color','r');
+plot(t, P_smooth_diag(:,4), 'LineWidth', 1.2,'Color','r');
 grid on;
 ylabel('var($\dot{\beta}$)', 'Interpreter','latex');
 xlabel('Tempo [s]');
-legend('EKF', 'UKF');
+legend('EKF', 'RTS');
 
 %% Salvataggio risultati
 
