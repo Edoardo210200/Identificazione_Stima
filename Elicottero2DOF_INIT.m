@@ -49,10 +49,10 @@ q_dot_0 = [alpha_dot_0 beta_dot_0]';     % Vettore condizioni iniziali per alpha
 %-------------------------------------------------------
 % Input del sistema (forze F1 ed F2)
 %-------------------------------------------------------
-%F1 = 0.341 + 0.04 * sin(0.6 * t) + 0.02 * sin(1.4 * t);                % [N] Forza del rotore principale
-%F2 = -0.006 + 0.010 * sin(0.8 * t + 0.3) + 0.006 * sin(1.7 * t);       % [N] Forza del rotore di coda
-F1 = 0 * t;
-F2 = 0 * t;
+F1 = 0.341 + 0.04 * sin(0.6 * t) + 0.02 * sin(1.4 * t);                % [N] Forza del rotore principale
+F2 = -0.006 + 0.010 * sin(0.8 * t + 0.3) + 0.006 * sin(1.7 * t);       % [N] Forza del rotore di coda
+%F1 = 0 * t;
+%F2 = 0 * t;
 u = [t, F1, F2];
 
 %% SENSORI: Accelerometro e Magnetometro (Vectornav vn-100)
@@ -111,9 +111,9 @@ params.R_magn = sigma_magn^2;
 %% Parametri UKF
 
 % SUKF (Filtro di Kalman Unscented Scalato)
-params.Alpha_UKF = 1e-2;       % Parametro Alpha UKF (Dispersione sigma-points)
-params.Beta_UKF = 2;        % Parametro Beta UKF (Ottimizza termini di ordine superiore)
-params.Kappa_UKF = 0;       % Parametro Kappa UKF (Parametro di scaling secondario)
+params.Alpha_UKF = 1e-2;        % Parametro Alpha UKF (Dispersione sigma-points)
+params.Beta_UKF = 2;            % Parametro Beta UKF (Ottimizza termini di ordine superiore)
+params.Kappa_UKF = 0;           % Parametro Kappa UKF (Parametro di scaling secondario)
 
 params.n_state = length(x_0);                   % Dimesnione stato
 params.n_input = 2;                             % Dimensione input
